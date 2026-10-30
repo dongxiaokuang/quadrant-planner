@@ -2,8 +2,6 @@
 
 Organize tasks by importance and urgency in Obsidian. This desktop plugin provides a four-quadrant board, tags, completed-task history, and optional desktop reminders. **The current user interface is in Simplified Chinese.**
 
-> Release preparation: this repository is being prepared for review. It has not been submitted to or approved for the Obsidian Community Plugins directory.
-
 ## Features
 
 - Create tasks in four quadrants, edit and reorder them, mark them complete, and restore completed tasks.
