@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict');
+const {normalizeLabel,renameLabel,removeLabel,labelColor}=require('./logic');
+assert.equal(normalizeLabel('  项目 😀  '),'项目 😀');
+assert.throws(()=>normalizeLabel('   '));
+assert.throws(()=>normalizeLabel('一二三四五六七八九'));
+assert.equal(normalizeLabel('😀😀😀😀😀😀😀😀'),'😀😀😀😀😀😀😀😀');
+const data={labels:['工作','个人'],tasks:[{id:'1',tags:['工作']},{id:'2',tags:['工作','个人'],completed:true},{id:'3'}]};
+assert.throws(()=>renameLabel(data,'工作','个人'));
+renameLabel(data,'工作','项目');assert.deepEqual(data.labels,['项目','个人']);assert.deepEqual(data.tasks[1].tags,['项目','个人']);
+removeLabel(data,'项目');assert.deepEqual(data.labels,['个人']);assert.deepEqual(data.tasks[0].tags,[]);assert.equal(data.tasks.length,3);
+assert.equal(labelColor('个人'),labelColor('个人'));
+console.log('标签名称、原子更新及历史事项保留测试通过');

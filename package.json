@@ -1,0 +1,11 @@
+{
+  "name": "quadrant-planner-local",
+  "version": "1.5.1",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

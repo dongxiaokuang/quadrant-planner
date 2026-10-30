@@ -1,0 +1,9 @@
+{
+  "id": "quadrant-planner-local",
+  "name": "Quadrant Planner",
+  "version": "1.5.1",
+  "minAppVersion": "1.5.0",
+  "description": "Organize tasks by importance and urgency and receive desktop reminders.",
+  "author": "Kuang.D",
+  "isDesktopOnly": true
+}

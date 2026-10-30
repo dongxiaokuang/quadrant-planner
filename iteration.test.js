@@ -1,0 +1,16 @@
+const assert=require('node:assert/strict');
+const {moveTask,defaultTime}=require('./logic');
+const task=(id,important,urgent,completed=false)=>({id,important,urgent,completed});
+const tasks=[task('a',true,true),task('x',false,false),task('b',true,true),task('c',false,false),task('z',true,false,true)];
+let result=moveTask(tasks,'b',{important:false,urgent:false,completed:false},'c',0);
+assert.deepEqual(result.map(t=>t.id),['a','x','b','c','z']);
+assert.equal(result[2].important,false);
+result=moveTask(result,'a',{completed:true},'z',0);
+assert.equal(result.find(t=>t.id==='a').completed,true);
+assert.deepEqual(result.filter(t=>t.completed).map(t=>t.id),['a','z']);
+result=moveTask(result,'z',{important:true,urgent:false,completed:false},null,0);
+assert.equal(result.find(t=>t.id==='z').completed,false);
+assert.deepEqual(result.filter(t=>!t.completed && !t.important && !t.urgent).map(t=>t.id),['x','b','c']);
+const now=new Date('2026-10-29T14:02:00').getTime();
+assert.equal(new Date(defaultTime(now)).getTime(),new Date('2026-10-29T14:10:00').getTime());
+console.log('拖动排序及默认时间测试通过');
